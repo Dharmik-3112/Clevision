@@ -39,7 +39,7 @@ Alternatively, use a local server such as VS Code Live Server.
 
 ## Project Structure
 
-```text
+
 project/
 │
 ├── index.html
