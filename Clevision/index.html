@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Header</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+
+                <!-- Logo -->
+                <div class="text-2xl font-bold text-blue-600">
+                    Clevision
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-blue-600 transition">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 transition">About</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 transition">Services</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 transition">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         class="h-7 w-7"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <nav class="flex flex-col px-4 py-3 space-y-3">
+                <a href="#" class="text-gray-700 hover:text-blue-600">Home</a>
+                <a href="#" class="text-gray-700 hover:text-blue-600">About</a>
+                <a href="#" class="text-gray-700 hover:text-blue-600">Services</a>
+                <a href="#" class="text-gray-700 hover:text-blue-600">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gray-50 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row items-center gap-10">
+                
+                <!-- Text Content -->
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                        Building the Future of Web
+                    </h1>
+
+                    <p class="text-lg text-gray-600 mb-8">
+                        We create modern, scalable, and user-friendly web experiences
+                        that help businesses grow. Our solutions combine innovative
+                        design with cutting-edge technology to deliver outstanding results.
+                    </p>
+
+                    <button
+                        class="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition duration-300">
+                        Get Started
+                    </button>
+                </div>
+
+                <!-- Image -->
+                <div class="md:w-1/2">
+                    <img
+                        src="https://placehold.co/600x400"
+                        alt="Hero Image"
+                        class="w-full rounded-xl shadow-lg">
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Company Info -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-3">Clevision Technologies</h3>
+                    <p class="text-gray-400">
+                        Building innovative web solutions for businesses worldwide.
+                    </p>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-3">Contact Us</h4>
+                    <p class="text-gray-400">
+                        Email:
+                        <a href="mailto:info@clevision.com"
+                        class="hover:text-white transition">
+                            info@clevision.com
+                        </a>
+                    </p>
+                    <p class="text-gray-400 mt-2">
+                        Phone:
+                        <a href="tel:+911234567890"
+                        class="hover:text-white transition">
+                            +91 12345 67890
+                        </a>
+                    </p>
+                </div>
+
+                <!-- Social Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-3">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://facebook.com"
+                        target="_blank"
+                        class="text-gray-400 hover:text-white transition">
+                            Facebook
+                        </a>
+
+                        <a href="https://twitter.com"
+                        target="_blank"
+                        class="text-gray-400 hover:text-white transition">
+                            Twitter
+                        </a>
+
+                        <a href="https://linkedin.com"
+                        target="_blank"
+                        class="text-gray-400 hover:text-white transition">
+                            LinkedIn
+                        </a>
+
+                        <a href="https://instagram.com"
+                        target="_blank"
+                        class="text-gray-400 hover:text-white transition">
+                            Instagram
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                © 2026 Clevision Technologies. All rights reserved.
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+    </script>
+
+</body>
+</html>

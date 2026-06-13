@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Header</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+  <div class="max-w-7xl mx-auto">
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-3xl font-bold">Products</h1>
+
+      <button
+        id="sortBtn"
+        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+      >
+        Sort by Price ↑
+      </button>
+    </div>
+
+    <div
+      id="productGrid"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+    ></div>
+  </div>
+
+    <script>
+
+        const products = [
+        { name: "Laptop", price: 45000, inStock: true, category: "electronics" },
+        { name: "Shirt", price: 1200, inStock: false, category: "clothing" },
+        { name: "Phone", price: 25000, inStock: true, category: "electronics" },
+        { name: "Shoes", price: 3500, inStock: true, category: "clothing" },
+        { name: "Tablet", price: 18000, inStock: false, category: "electronics" },
+        { name: "Watch", price: 8000, inStock: true, category: "accessories" },
+        { name: "Bag", price: 2200, inStock: true, category: "accessories" },
+        { name: "Headphones", price: 3000, inStock: true, category: "electronics" }
+        ];
+
+        // 1. Filter products
+        const filteredProducts = products.filter(
+        product => product.inStock && product.price < 10000
+        );
+
+        console.log(filteredProducts);
+
+
+        // 2. Group by category
+        const groupedProducts = filteredProducts.reduce((acc, product) => {
+        const { category, name, price } = product;
+
+        if (!acc[category]) {
+            acc[category] = [];
+        }
+
+        acc[category].push({ name, price });
+
+        return acc;
+        }, {});
+
+        console.log(groupedProducts);
+
+        // 3. Total value
+        const totalValue = filteredProducts.reduce(
+        (total, product) => total + product.price,
+        0
+        );
+
+        console.log("Total Value:", totalValue);
+
+        const productGrid = document.getElementById("productGrid");
+        const sortBtn = document.getElementById("sortBtn");
+
+        let ascending = true;
+
+        const inStockProducts = products.filter(product => product.inStock);
+
+        function formatPrice(price) {
+        return new Intl.NumberFormat("en-IN", {
+            style: "currency",
+            currency: "INR",
+            maximumFractionDigits: 0
+        }).format(price);
+        }
+
+        function renderProducts(productList) {
+        productGrid.innerHTML = "";
+
+        productList.forEach(product => {
+            const card = document.createElement("div");
+
+            card.className =
+            "bg-white rounded-xl shadow-md hover:shadow-lg transition p-5";
+
+            card.innerHTML = `
+            <h2 class="text-xl font-semibold text-gray-800 mb-3">
+                ${product.name}
+            </h2>
+
+            <p class="text-2xl font-bold text-green-600 mb-3">
+                ${formatPrice(product.price)}
+            </p>
+
+            <span
+                class="inline-block px-3 py-1 text-sm font-medium bg-blue-100 text-blue-700 rounded-full"
+            >
+                ${product.category}
+            </span>
+            `;
+
+            productGrid.appendChild(card);
+        });
+    }
+
+        // Initial render
+        renderProducts(inStockProducts);
+
+        sortBtn.addEventListener("click", () => {
+        ascending = !ascending;
+
+        const sortedProducts = [...inStockProducts].sort((a, b) =>
+            ascending ? a.price - b.price : b.price - a.price
+        );
+
+        sortBtn.textContent = ascending
+            ? "Sort by Price ↑"
+            : "Sort by Price ↓";
+
+        renderProducts(sortedProducts);
+        });
+        
+    </script>
+
+</body>
+</html>
